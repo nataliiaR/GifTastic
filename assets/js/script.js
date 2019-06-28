@@ -1,23 +1,27 @@
     // Adding click event listen listener to all buttons
-    $("button").on("click", function() {
-        // Grabbing and storing the data-animal property value from the button
-        var animal = $(this).attr("data-animal");
-  
-        // Constructing a queryURL using the animal name
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-          animal + "&api_key=rhzLqNLrZ7015b57CwgKM91URwHAduDY&limit=10";
-  
-        // Performing an AJAX request with the queryURL
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        })
-          // After data comes back from the request
-          .then(function(response) {
-  
-            create(response);
-      });
+    $("button.giff").on("click", function() {
+        rungiffSearch(this);
     });
+
+    function rungiffSearch(el){
+                // Grabbing and storing the data-animal property value from the button
+                var animal = $(el).attr("data-animal");
+  
+                // Constructing a queryURL using the animal name
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                  animal + "&api_key=rhzLqNLrZ7015b57CwgKM91URwHAduDY&limit=10";
+          
+                // Performing an AJAX request with the queryURL
+                $.ajax({
+                  url: queryURL,
+                  method: "GET"
+                })
+                  // After data comes back from the request
+                  .then(function(response) {
+          
+                    create(response);
+              });
+    }
 
       function clickGiff(el) {
    
@@ -45,23 +49,15 @@
     event.preventDefault();
     clear();
     var animal = $('#searchGiff').val();
-    console.log("animal "+ animal);
-  
-    // Constructing a queryURL using the animal name
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-      animal + "&api_key=rhzLqNLrZ7015b57CwgKM91URwHAduDY&limit=10";
-  
-    // Make the AJAX request to the API - GETs the JSON data at the queryURL.
-    // The data then gets passed as an argument to the updatePage function
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // After data comes back from the request
-        .then(function(response) {
+    var newButton =$('<button class="btn btn-primary giff">');
+    newButton.attr("data-animal",animal);
+    newButton.text(animal);
+    newButton.attr("onclick","rungiffSearch(this)")
+    $(".button_group").append(newButton);
 
-          create(response);
-    });
+    console.log("animal "+ animal);
+    $('#searchGiff').val("");
+
 });
   
   function create(response){
