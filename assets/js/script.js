@@ -98,6 +98,7 @@
 
     function clear(){
         $("#gifs-appear-here").empty();
+        $("#clear-section").css("display","none");
     }
 
  
