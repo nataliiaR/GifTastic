@@ -1,3 +1,4 @@
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -11,4 +12,31 @@
     .bd-placeholder-img-lg {
       font-size: 3.5rem;
     }
+  }
+
+  .btn{
+    margin: 0.5em;
+  }
+
+  section{
+    margin: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 100%
+  
+  }
+
+  input{
+    max-width: 100% 
+  }
+  .jumbotron-heading{
+
+    font-family:'Courgette', cursive;
+  }
+  .album{
+    margin: 1em;
+  }
+
+  #clear-section{
+    display: none;
   }

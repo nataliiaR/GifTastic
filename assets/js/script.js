@@ -1,3 +1,5 @@
+    
+
     // Adding click event listen listener to all buttons
     $("button.giff").on("click", function() {
         rungiffSearch(this);
@@ -47,7 +49,7 @@
     // This way we can hit enter on the keyboard and it registers the search
     // (in addition to clicks). Prevents the page from reloading on form submit.
     event.preventDefault();
-    clear();
+   
     var animal = $('#searchGiff').val();
     var newButton =$('<button class="btn btn-primary giff">');
     newButton.attr("data-animal",animal);
@@ -90,11 +92,18 @@
     
       // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
       $("#gifs-appear-here").append('<div class="col-md-4>"').prepend(animalDiv);
+      $("#clear-section").css("display","block");
     }
     }
 
     function clear(){
         $("#gifs-appear-here").empty();
     }
+
+ 
+
+    $("#clear-section").on("click", function(){
+        clear();
+    });
 
   

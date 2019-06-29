@@ -8,42 +8,42 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="srtylesheet" href="https://getbootstrap.com/docs/4.3/examples/album/album.css">
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
-              <main role="main">
+      <main role="main">
               
-                <section class="jumbotron text-center">
-                  <div class="container">
-                    <h1 class="jumbotron-heading">GIF TASTIC</h1>
-                      <div class="button_group">
-                      <button class="btn btn-primary giff" data-animal="cat">meow</button>
-                      <button class="btn btn-primary giff" data-animal="dog">woof</button>
-                      <button class="btn btn-primary giff" data-animal="bird">chirp</button>
-                      </div>
-                      <input id="searchGiff"></input>
-                      <button class="btn btn-secondary" id="run-search">Search for GIF</button>
-                    
-                  </div>
-                </section>
-              
-                <div class="album py-5 bg-light">
-                  <div class="container">
-              
-                    <div class="row" id="gifs-appear-here">
-                      
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">GIFTASTIC</h1>
+            <div class="row">
+              <div class="button_group col-8">
+              <button class="btn btn-primary giff" data-animal="africa">Africa</button>
+              <button class="btn btn-primary giff" data-animal="australia">Australia</button>
+              <button class="btn btn-primary giff" data-animal="europe">Europe</button>
+              <button class="btn btn-primary giff" data-animal="america">America</button>
+              </div>
+              <div class="col-4">
+              <input id="searchGiff" placeholder="Search for GIFs"></input>
+              <button class="btn btn-secondary" id="run-search">Add GIF button</button>
+              </div>
+              </div>
+          </div>
+        </section>
+      
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <button class="btn btn-secondary" id="clear-section">Clear section</button>
+            <div class="row" id="gifs-appear-here">
 
-                    
-                    </div>
-                  </div>
-                </div>
+            
+            </div>
+          </div>
+        </div>
               
-              </main>
-
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/js/script.js">
-
-      </script>
-    </body>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+  </body>
 </html>
