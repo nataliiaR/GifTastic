@@ -1,4 +1,5 @@
-    
+
+
 
     // Adding click event listen listener to all buttons
     $("button.giff").on("click", function() {
@@ -42,7 +43,7 @@
           $(el).attr("data-state", "still");
         }
       }
-
+      var arrayFromStorage = [];
   // .on("click") function associated with the Search Button
   $("#run-search").on("click", function(event) {
     // This line allows us to take advantage of the HTML "submit" property
@@ -59,9 +60,16 @@
 
     console.log("animal "+ animal);
     $('#searchGiff').val("");
+  
+    arrayFromStorage.push(newButton.text());
+    console.log("array lenght " + arrayFromStorage.length);
+    localStorage.setItem("text",newButton.text());
+    localStorage.setItem("animal",arrayFromStorage);
 
 });
   
+
+
   function create(response){
 
     // storing the data from the AJAX request in the results variable
@@ -105,6 +113,15 @@
 
     $("#clear-section").on("click", function(){
         clear();
+    });
+
+    $(".giff").on("hover", function(){
+        $(".giff").append("delete-button").css("display","inline-block");
+
+        $("#delete-button").on("click",function(){
+            $(".giff").css("display","none");
+
+        });
     });
 
   
