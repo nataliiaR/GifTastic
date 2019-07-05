@@ -20,6 +20,7 @@ function renderGIFButtons(gifListLocalStorage,listOfDefaultGIFButtons ) {
     gifButton.attr("data-gif",listOfDefaultGIFButtons[i]);
     if (listOfDefaultGIFButtons[i]==="My favorite"){
       gifButton.attr("onclick","showFavorite()");
+      gifButton.css("background-color","pink");
     }
     else{
       gifButton.attr("onclick","rungiffSearch(this)");
@@ -103,9 +104,10 @@ function create(response){
     var gifDiv = $("<div class='gifDiv col-xs-12 col-sm-6 col-md-3 col-lg-3'>");
 
     var rating = $("<p>").text("Rating: " + results[i].rating);
-    var title = $("<p class='favorite'>").text("Title: " + results[i].title);
+    var title = $("<p class='favorite-title'>").text("Title: " + results[i].title);
     var addFavorite = $("<button class='btn btn-primary favorite' onclick='addToFavorite(this)'>");
     addFavorite.text("Add to favorite");
+    addFavorite.css("background-color","pink");
     var gifImage = $("<img>");
 
     gifImage.attr("src", results[i].images.fixed_height_still.url);
@@ -129,9 +131,12 @@ function showFavorite(){
   clear();
 
   for (var j=0; j<favoriteGif.length; j++){
+    var divFromFavStorage  = $("<div class='gifDiv col xs-12 col-sm-6 col-md-4 col-lg-4'>");
+
+    divFromFavStorage.html(favoriteGif[j]);
 
     console.log ( "favoriteGif[j] "+favoriteGif);
-    $("#gifs-appear-here").append(favoriteGif[j]);
+    $("#gifs-appear-here").append(divFromFavStorage);
     $(".favorite").css("display","none");
   }
 
@@ -139,7 +144,9 @@ function showFavorite(){
 
 function addToFavorite(el){
 
-  var objectDiv = $(el).parent();
+  var objectDiv = $(el).parent().html();
+
+  console.log("objectDiv"+objectDiv);
 
   favoriteGif.push(objectDiv);
 
