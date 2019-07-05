@@ -1,18 +1,30 @@
-var listOfDefaultGIFButtons = ["America","Africa","Europe","Australia"];
+
+var listOfDefaultGIFButtons = ["My favorite","America","Africa","Europe","Australia"];
 var gifListLocalStorage = JSON.parse(localStorage.getItem('gifButtons'));
+var favoriteGif = JSON.parse(localStorage.getItem('gifFavorites'));
 var limit =10;
 var offset=0;
 
+if(!Array.isArray(favoriteGif)) {
+  favoriteGif = [];
+}
 if(!Array.isArray(gifListLocalStorage)) {
   gifListLocalStorage = [];
 }
 
-function renderGIFButtons(gifListLocalStorage,listOfDefaultGIFButtons ) {
 
+function renderGIFButtons(gifListLocalStorage,listOfDefaultGIFButtons ) {
+ 
   for(let i = 0; i < listOfDefaultGIFButtons.length; i++) {
     let gifButton = $('<button class="btn btn-primary giff">');
     gifButton.attr("data-gif",listOfDefaultGIFButtons[i]);
-    gifButton.attr("onclick","rungiffSearch(this)")
+    if (listOfDefaultGIFButtons[i]==="My favorite"){
+      gifButton.attr("onclick","showFavorite()");
+    }
+    else{
+      gifButton.attr("onclick","rungiffSearch(this)");
+    }
+
     gifButton.text(listOfDefaultGIFButtons[i][0].toUpperCase()+listOfDefaultGIFButtons[i].substr(1));
     $(".button_group").append(gifButton);
     }
@@ -82,7 +94,6 @@ $("#run-search").on("click", function(event) {
 });
 
 
-
 function create(response){
 
   var results = response.data;
@@ -92,8 +103,9 @@ function create(response){
     var gifDiv = $("<div class='gifDiv col-xs-12 col-sm-6 col-md-3 col-lg-3'>");
 
     var rating = $("<p>").text("Rating: " + results[i].rating);
-    var title = $("<p>").text("Title: " + results[i].title);
-
+    var title = $("<p class='favorite'>").text("Title: " + results[i].title);
+    var addFavorite = $("<button class='btn btn-primary favorite' onclick='addToFavorite(this)'>");
+    addFavorite.text("Add to favorite");
     var gifImage = $("<img>");
 
     gifImage.attr("src", results[i].images.fixed_height_still.url);
@@ -107,10 +119,31 @@ function create(response){
     gifDiv.append(gifImage);
     gifDiv.append(rating);
     gifDiv.prepend(title);
-
+    gifDiv.append(addFavorite);
     $("#gifs-appear-here").append('<div class="col-md-4>"').prepend(gifDiv);
     $("#clear-section").css("display","block");
   }
+}
+
+function showFavorite(){
+  clear();
+
+  for (var j=0; j<favoriteGif.length; j++){
+
+    console.log ( "favoriteGif[j] "+favoriteGif);
+    $("#gifs-appear-here").append(favoriteGif[j]);
+    $(".favorite").css("display","none");
+  }
+
+}
+
+function addToFavorite(el){
+
+  var objectDiv = $(el).parent();
+
+  favoriteGif.push(objectDiv);
+
+  localStorage.setItem('gifFavorites', JSON.stringify(favoriteGif));
 }
 
 function clear(){

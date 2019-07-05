@@ -54,7 +54,6 @@
 
   .gifImage{
     width: 100%;
-  
     object-fit: cover;
   }
   #gifs-appear-here{
