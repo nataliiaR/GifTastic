@@ -39,4 +39,25 @@
 
   #clear-section{
     display: none;
+    margin-left: 67%;
+  }
+  .gifDiv{
+    border: 0.1em solid silver;
+    margin: 1em;
+    overflow-y: scroll;
+    overflow-x:scroll;
+    font-style: italic;
+    width: 300px;
+    height: 250px;
+
+  }
+
+  .gifImage{
+    width: 100%;
+  
+    object-fit: cover;
+  }
+  #gifs-appear-here{
+    max-width: 100%;
+    margin: 0em 9em;
   }
