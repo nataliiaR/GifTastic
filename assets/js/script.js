@@ -2,8 +2,9 @@
 var listOfDefaultGIFButtons = ["My favorite","America","Africa","Europe","Australia"];
 var gifListLocalStorage = JSON.parse(localStorage.getItem('gifButtons'));
 var favoriteGif = JSON.parse(localStorage.getItem('gifFavorites'));
-var limit =10;
-var offset=0;
+var limit = 10;
+var offset = 0;
+var myMap = new Map();
 
 if(!Array.isArray(favoriteGif)) {
   favoriteGif = [];
@@ -18,7 +19,7 @@ function renderGIFButtons(gifListLocalStorage,listOfDefaultGIFButtons ) {
   for(let i = 0; i < listOfDefaultGIFButtons.length; i++) {
     let gifButton = $('<button class="btn btn-primary giff">');
     gifButton.attr("data-gif",listOfDefaultGIFButtons[i]);
-    if (listOfDefaultGIFButtons[i]==="My favorite"){
+    if (listOfDefaultGIFButtons[i] === "My favorite"){
       gifButton.attr("onclick","showFavorite()");
       gifButton.css("background-color","pink");
     }
@@ -77,10 +78,10 @@ $("#run-search").on("click", function(event) {
 
   event.preventDefault();
 
-  if($('#searchGiff').val().trim() !==""){
+  if($('#searchGiff').val().trim() !== ""){
 
     var gif = $('#searchGiff').val().trim();
-    var newButton =$('<button class="btn btn-primary giff">');
+    var newButton = $('<button class="btn btn-primary giff">');
     newButton.attr("data-gif",gif);
     newButton.text(gif);
     newButton.attr("onclick","rungiffSearch(this)")
@@ -128,46 +129,41 @@ function create(response){
 }
 
 function showFavorite(){
+  
   clear();
 
-  for (var j=0; j<favoriteGif.length; j++){
-    var divFromFavStorage  = $("<div class='gifDiv gifDivFav col-xs-12 col-sm-6 col-md-3 col-lg-3'>");
+  for (var j = 0; j < favoriteGif.length; j++){
+    var divFromFavStorage = $("<div class='gifDiv gifDivFav col-xs-12 col-sm-6 col-md-3 col-lg-3'>");
 
     divFromFavStorage.html(favoriteGif[j]);
-
-    console.log ( "favoriteGif[j] "+favoriteGif);
-    $("#gifs-appear-here").append(divFromFavStorage);
+    $("#gifs-appear-here").prepend(divFromFavStorage);
     $(".favorite").css("display","none");
   }
 
 }
-var myMap = new Map();
+
 function addToFavorite(el){
 
-var object = $(el).parent();
-var objectTitle = $(el).parent().find('p').html();
+  var object = $(el).parent();
+  var objectTitle = $(el).parent().find('p').html();
 
-console.log(myMap.get(objectTitle));
 
-let i;
-  if(myMap.get(objectTitle)===undefined){
-    i=1
+  let i;
+  if(myMap.get(objectTitle) === undefined){
+    i = 1
     myMap.set(objectTitle,1);
+    var objectDiv = object.html();
+
+    favoriteGif.push(objectDiv);
+
+    localStorage.setItem('gifFavorites', JSON.stringify(favoriteGif));
+    $(el).text("Favorited");
+
+  }else{
+    i = i + 1;
+    myMap.set(objectTitle,i);
   
-
-  var objectDiv = object.html();
-
-  console.log("objectDiv"+objectDiv);
-
-  favoriteGif.push(objectDiv);
-
-  localStorage.setItem('gifFavorites', JSON.stringify(favoriteGif));
-  $(el).text("Favorited");
-}else{
-  i=i+1;
-  myMap.set(objectTitle,i);
-  
-}
+  }
 }
 
 

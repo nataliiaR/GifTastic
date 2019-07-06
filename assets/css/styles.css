@@ -5,7 +5,7 @@
       height: 200px;
     }
     #gifs-appear-here{
-      margin: 2em;
+      margin: 0.2em 0.2em 0.2em 1em;
     }
 
   }
@@ -15,7 +15,7 @@
     }
     #gifs-appear-here{
       max-width: 100%;
-      margin: 0.2em;
+      margin: 0.2em 0.2em 0.2em 3em;
     }
     .gifDiv{
       width: 300px;
