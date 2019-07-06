@@ -131,7 +131,7 @@ function showFavorite(){
   clear();
 
   for (var j=0; j<favoriteGif.length; j++){
-    var divFromFavStorage  = $("<div class='gifDiv col-xs-12 col-sm-6 col-md-3 col-lg-3'>");
+    var divFromFavStorage  = $("<div class='gifDiv gifDivFav col-xs-12 col-sm-6 col-md-3 col-lg-3'>");
 
     divFromFavStorage.html(favoriteGif[j]);
 
@@ -141,17 +141,35 @@ function showFavorite(){
   }
 
 }
-
+var myMap = new Map();
 function addToFavorite(el){
 
-  var objectDiv = $(el).parent().html();
+var object = $(el).parent();
+var objectTitle = $(el).parent().find('p').html();
+
+console.log(myMap.get(objectTitle));
+
+let i;
+  if(myMap.get(objectTitle)===undefined){
+    i=1
+    myMap.set(objectTitle,1);
+  
+
+  var objectDiv = object.html();
 
   console.log("objectDiv"+objectDiv);
 
   favoriteGif.push(objectDiv);
 
   localStorage.setItem('gifFavorites', JSON.stringify(favoriteGif));
+  $(el).text("Favorited");
+}else{
+  i=i+1;
+  myMap.set(objectTitle,i);
+  
 }
+}
+
 
 function clear(){
   $("#gifs-appear-here").empty();
