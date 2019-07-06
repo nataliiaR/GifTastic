@@ -8,9 +8,27 @@
     user-select: none;
   }
 
+  @media (max-width: 400px) {
+    .gifDiv{
+      width: 200px;
+      height: 200px;
+    }
+    #gifs-appear-here{
+      margin: 2em;
+    }
+
+  }
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
       font-size: 3.5rem;
+    }
+    #gifs-appear-here{
+      max-width: 100%;
+      margin: 0.2em;
+    }
+    .gifDiv{
+      width: 300px;
+      height: 350px;
     }
   }
 
@@ -44,19 +62,16 @@
   .gifDiv{
     border: 0.1em solid silver;
     margin: 1em;
-    overflow-y: scroll;
+    overflow-y: inherit;
     overflow-x:scroll;
     font-style: italic;
     width: 300px;
-    height: 250px;
+    height: 350px;
 
   }
 
   .gifImage{
     width: 100%;
-    object-fit: cover;
+
   }
-  #gifs-appear-here{
-    max-width: 100%;
-    margin: 0em 9em;
-  }
+ 
