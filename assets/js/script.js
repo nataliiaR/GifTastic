@@ -131,7 +131,7 @@ function showFavorite(){
   clear();
 
   for (var j=0; j<favoriteGif.length; j++){
-    var divFromFavStorage  = $("<div class='gifDiv col xs-12 col-sm-6 col-md-4 col-lg-4'>");
+    var divFromFavStorage  = $("<div class='gifDiv col-xs-12 col-sm-6 col-md-4 col-lg-4'>");
 
     divFromFavStorage.html(favoriteGif[j]);
 
