@@ -48,7 +48,7 @@
 
   #clear-section{
     display: none;
-    margin-left: 67%;
+    margin-left: 70%;
   }
   .gifDiv{
     border: 0.1em solid silver;
@@ -68,5 +68,12 @@
   .gifImage{
     width: 100%;
 
+  }
+
+  .placehold{
+    font-family:'Courgette', cursive;
+    color: grey;
+    text-align: center;
+    margin: auto;
   }
  
