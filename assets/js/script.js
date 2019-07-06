@@ -177,6 +177,7 @@ function addToFavorite(el){
 function clear(){
   $("#gifs-appear-here").empty();
   $("#clear-section").css("display","none");
+  $(".placehold").text("Select a button to show GIFs here");
   $(".placehold").css("display","block");
 }
 
